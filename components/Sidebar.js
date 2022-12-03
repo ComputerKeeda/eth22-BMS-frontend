@@ -8,9 +8,10 @@ import { HiInboxArrowDown, HiOutlineUserGroup } from "react-icons/hi2";
 import { MdOutlineScheduleSend } from "react-icons/md";
 import { BsStar } from "react-icons/bs";
 import { RiSpam2Fill, RiSpam3Fill } from "react-icons/ri";
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
 const Sidebar = () => {
-
-  const [bottomModal, setBottomModal] = useState(true)
+  const { disconnect } = useDisconnect();
+  const [bottomModal, setBottomModal] = useState(true);
 
   return (
     <div className="w-full">
@@ -24,7 +25,9 @@ const Sidebar = () => {
                 alt="company's logo"
               />
             </div>
-            <div className="title"></div>
+            <div className="title">
+              <button onClick={() => disconnect}>Disconnect</button>
+            </div>
             <div className="toggle">
               <IconButton className="shadow-none hover:shadow-none bg-transparent">
                 <span className="text-primary-900">
@@ -43,25 +46,29 @@ const Sidebar = () => {
                 Inbox
               </div>
             </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2">
+            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
               <div className="icon text-primary-700">
                 <BiMailSend size={22} />
               </div>
-              <div className="title inter text-base font-semibold">Sent</div>
+              <div className="title inter text-base font-semibold group-hover:text-primary-900">
+                Sent
+              </div>
             </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2">
+            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
               <div className="icon text-primary-700">
                 <FaMailBulk size={22} />
               </div>
-              <div className="title inter text-base font-semibold">
+              <div className="title inter text-base font-semibold group-hover:text-primary-900">
                 All mail
               </div>
             </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2">
+            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
               <div className="icon text-primary-700">
                 <IoVideocam size={22} />
               </div>
-              <div className="title inter text-base font-semibold">Connect</div>
+              <div className="title inter text-base font-semibold group-hover:text-primary-900">
+                Connect
+              </div>
             </div>
             {/* upcoming features */}
             <div className="items flex flex-col items-start justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 inter text-primary-900 font-semibold">
@@ -158,7 +165,9 @@ const Sidebar = () => {
 
           <div
             id="dropdown-cta"
-            className={`p-4 mt-6 bg-primary-50 rounded-lg self-end absolute bottom-4 ml-3 ${bottomModal ? "" : "hidden"} `}
+            className={`p-4 mt-6 bg-primary-50 rounded-lg self-end absolute bottom-4 ml-3 ${
+              bottomModal ? "" : "hidden"
+            } `}
             role="alert"
           >
             <div className="flex items-center mb-3">
@@ -171,7 +180,7 @@ const Sidebar = () => {
                 data-collapse-toggle="dropdown-cta"
                 aria-label="Close"
                 onClick={() => {
-                  setBottomModal(false)
+                  setBottomModal(false);
                 }}
               >
                 <span className="sr-only">Close</span>

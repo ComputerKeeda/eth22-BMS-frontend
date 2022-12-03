@@ -6,7 +6,27 @@ import { Provider } from "react-redux";
 import { store } from "../app/store";
 // import '../styles/scrollbar.css'
 
+import {
+  WagmiConfig,
+  createClient,
+  defaultChains,
+  configureChains,
+} from "wagmi";
+import { publicProvider } from "wagmi/providers/public";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import { ContextProvider } from "../context/ContextProvider";
 
+const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
+  publicProvider(),
+]);
+
+// Set up client
+const client = createClient({
+  autoConnect: true,
+  connectors: [new MetaMaskConnector({ chains })],
+  provider,
+  webSocketProvider,
+});
 const theme = createTheme({
   type: "light", // it could be "light" or "dark"
   theme: {
@@ -41,15 +61,19 @@ function MyApp({ Component, pageProps }) {
   const Layout = Component.Layout || EmptyLayout;
   return (
     <>
-      <Provider store={store}>
-        <NextUIProvider>
-          <ThemeProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ThemeProvider>
-        </NextUIProvider>
-      </Provider>
+      <WagmiConfig client={client}>
+        <Provider store={store}>
+          <ContextProvider>
+            <NextUIProvider>
+              <ThemeProvider>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </ThemeProvider>
+            </NextUIProvider>
+          </ContextProvider>
+        </Provider>
+      </WagmiConfig>
     </>
   );
 }
