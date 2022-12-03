@@ -27,7 +27,7 @@ const Sidebar = () => {
             <div className="title"></div>
             <div className="toggle">
               <IconButton className="shadow-none hover:shadow-none bg-transparent">
-                <span className="text-primary-500">
+                <span className="text-primary-900">
                   <HiMenuAlt1 size={20} />
                 </span>
               </IconButton>
