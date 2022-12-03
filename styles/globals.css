@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    font-size: 40px;
+    line-height: 58px;
+    letter-spacing: 0.01em !important;
+  }
+  h2 {
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: 0.01em !important;
+  }
+  h3 {
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: 0.01em !important;
+  }
+  h4 {
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.01em !important;
+  }
+  h5 {
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.01em !important;
+  }
+}
+
+@layer components {
+  .para-large {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .para-medium {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .para-small {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .para-xsmall {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .para-overline {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.02em;
+  }
+  .poppins {
+    font-family: "Poppins", sans-serif;
+  }
+  .inter {
+    font-family: "Inter", sans-serif;
+  }
+
+}
+
 body{
   margin: 0;
   padding: 0;
