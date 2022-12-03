@@ -177,7 +177,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="date text-xs font-medium text-gray-500  inter">
-                16:1 РМ.JU 122.2021
+                16:1 РМ.JUN 122.2021
               </div>
             </div>
             <div className="content w-full text-xs inter text-gray-500">
