@@ -6,7 +6,7 @@ So Basically BMS is a Truly Blockchain Based Email. BMS allows wallet address to
 Any one with a MetaMask Wallet Can Currently Use This Application.
 
 
-##Whats More to Come
+## Whats More to Come
 More Wallet Integration Coming Soon.
 
 
