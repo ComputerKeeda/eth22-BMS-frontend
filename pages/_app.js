@@ -15,6 +15,8 @@ import {
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { ContextProvider } from "../context/ContextProvider";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
   publicProvider(),
@@ -58,6 +60,14 @@ const theme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  useEffect(() => {
+    let user = localStorage.getItem("userWA");
+    if (!user) {
+      router.push("/login");
+    }
+  }, []);
+
   const Layout = Component.Layout || EmptyLayout;
   return (
     <>

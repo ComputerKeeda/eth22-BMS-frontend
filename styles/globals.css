@@ -58,17 +58,46 @@
   .inter {
     font-family: "Inter", sans-serif;
   }
-
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
 
-.metamask{
-  background-image: url('../public/assets/MetaMask_Fox.svg.png');
+.metamask {
+  background-image: url("../public/assets/MetaMask_Fox.svg.png");
   background-position: 50% 20%;
   background-repeat: no-repeat;
   background-size: 20%;
+}
+
+.App {
+
+  text-align: center;
+  background-color: #282c34;
+  height: calc(100vh - 64px);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+}
+
+button {
+  background: #246bfd;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  margin: 0.75rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.75;
 }

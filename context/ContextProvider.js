@@ -6,15 +6,18 @@ const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
   // make states and functions
-const [setCollapseSidebar, setSetCollapseSidebar] = useState(false);
-
+  const [setCollapseSidebar, setSetCollapseSidebar] = useState(false);
+  const [loginUserDetails, setLoginUserDetails] = useState(null);
 
   return (
     <StateContext.Provider
-      value={{
-        // call them here to to transfer them to any where
-        
-      }}
+      value={
+        {
+          // call them here to to transfer them to any where
+          setCollapseSidebar, setSetCollapseSidebar,
+          loginUserDetails, setLoginUserDetails
+        }
+      }
     >
       {children}
     </StateContext.Provider>

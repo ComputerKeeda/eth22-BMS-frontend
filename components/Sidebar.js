@@ -3,12 +3,18 @@ import React, { useState } from "react";
 import { BiMailSend } from "react-icons/bi";
 import { IoShareSocial, IoVideocam } from "react-icons/io5";
 import { FaEthereum, FaMailBulk, FaPeopleCarry } from "react-icons/fa";
-import { HiArrowDown, HiMenuAlt1, HiUserGroup } from "react-icons/hi";
+import {
+  HiArrowDown,
+  HiMenuAlt1,
+  HiOutlineLogout,
+  HiUserGroup,
+} from "react-icons/hi";
 import { HiInboxArrowDown, HiOutlineUserGroup } from "react-icons/hi2";
 import { MdOutlineScheduleSend } from "react-icons/md";
 import { BsStar } from "react-icons/bs";
 import { RiSpam2Fill, RiSpam3Fill } from "react-icons/ri";
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from "wagmi";
+import Link from "next/link";
 const Sidebar = () => {
   const { disconnect } = useDisconnect();
   const [bottomModal, setBottomModal] = useState(true);
@@ -18,58 +24,80 @@ const Sidebar = () => {
       <aside className="w-64 h-screen" aria-label="Sidebar">
         <div className="h-screen relative py-4 px-3 bg-white rounded flex flex-col items-start justify-start">
           <div className="heading flex items-center justify-between w-full">
-            <div className="logo">
-              <img
+            <div className="logo inter font-semibold text-5xl text-primary-900">
+              {/* <img
                 src="/assets/logo/airchains-console-primary-mono.svg"
                 className="h-14"
                 alt="company's logo"
-              />
+              /> */}
+              BMS
             </div>
-            <div className="title">
-              <button onClick={() => disconnect}>Disconnect</button>
-            </div>
+            {/* <div className="title">
+              <button
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+              >
+                Disconnect
+              </button>
+            </div> */}
             <div className="toggle">
-              <IconButton className="shadow-none hover:shadow-none bg-transparent">
+              <IconButton
+                className="shadow-none hover:shadow-none bg-transparent"
+                onClick={() => {
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+              >
                 <span className="text-primary-900">
-                  <HiMenuAlt1 size={20} />
+                  <HiOutlineLogout size={25} />
                 </span>
               </IconButton>
             </div>
           </div>
 
           <div className="list w-full mt-6 flex flex-col items-start justify-start">
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 bg-primary-50">
-              <div className="icon text-primary-700">
-                <HiInboxArrowDown size={22} />
+            <Link href="/" className="w-full">
+              <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 bg-primary-50">
+                <div className="icon text-primary-700">
+                  <HiInboxArrowDown size={22} />
+                </div>
+                <div className="title inter text-base font-semibold text-primary-900">
+                  Inbox
+                </div>
               </div>
-              <div className="title inter text-base font-semibold text-primary-900">
-                Inbox
+            </Link>
+            <Link href="/" className="w-full">
+              <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
+                <div className="icon text-primary-700">
+                  <BiMailSend size={22} />
+                </div>
+                <div className="title inter text-base font-semibold group-hover:text-primary-900">
+                  Sent
+                </div>
               </div>
-            </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
-              <div className="icon text-primary-700">
-                <BiMailSend size={22} />
+            </Link>
+            <Link href="/" className="w-full">
+              <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
+                <div className="icon text-primary-700">
+                  <FaMailBulk size={22} />
+                </div>
+                <div className="title inter text-base font-semibold group-hover:text-primary-900">
+                  All mail
+                </div>
               </div>
-              <div className="title inter text-base font-semibold group-hover:text-primary-900">
-                Sent
+            </Link>
+            <Link href="/connect" className="w-full">
+              <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
+                <div className="icon text-primary-700">
+                  <IoVideocam size={22} />
+                </div>
+                <div className="title inter text-base font-semibold group-hover:text-primary-900">
+                  Connect
+                </div>
               </div>
-            </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
-              <div className="icon text-primary-700">
-                <FaMailBulk size={22} />
-              </div>
-              <div className="title inter text-base font-semibold group-hover:text-primary-900">
-                All mail
-              </div>
-            </div>
-            <div className="items flex items-center justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 group cursor-pointer hover:bg-primary-50">
-              <div className="icon text-primary-700">
-                <IoVideocam size={22} />
-              </div>
-              <div className="title inter text-base font-semibold group-hover:text-primary-900">
-                Connect
-              </div>
-            </div>
+            </Link>
             {/* upcoming features */}
             <div className="items flex flex-col items-start justify-start gap-2 py-1 w-full my-1 rounded-lg px-2 inter text-primary-900 font-semibold">
               <div className="row flex items-center gap-2">
